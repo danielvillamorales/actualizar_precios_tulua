@@ -16,7 +16,7 @@ def consulta_productos_a_cambiar():
         cursor = con_pos.cursor()
         sql = "select b.pr_producto,round(b.pr_costoultimo*1.2,0) costo,  b.pr_precioultimo tiquete from  productos@posoceanic a   "\
                " join   productos b on (a.pr_producto = b.pr_producto ) "\
-               " where  a.pr_precioultimo <> b.pr_precioultimo or round(b.pr_costoultimo*1.2,0) <> round(a.pr_costoultimo*1.2,0)"\
+               " where  a.pr_precioultimo <> b.pr_precioultimo or round(b.pr_costoultimo*1.2,0) <> a.pr_costoultimo"\
         #print(sql)
         cursor.execute(sql)
         data = cursor.fetchall()
